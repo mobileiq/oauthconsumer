@@ -136,6 +136,7 @@ for (; theInIndex < (inInputDataSize / 3) * 3; theInIndex += 3)
 		}
 	}
 const size_t theRemainingBytes = inInputDataSize - theInIndex;
+#pragma unused(theOutIndex)
 if (theRemainingBytes == 1)
 	{
 	outOutputData[theOutIndex++] = kBase64EncodeTable[(theInPtr[theInIndex] & kBits_11111100) >> 2];

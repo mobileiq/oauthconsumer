@@ -14,7 +14,9 @@ A million repetitions of "a"
 
 /* #define LITTLE_ENDIAN * This should be #define'd if true. */
 #if __LITTLE_ENDIAN__
+#ifndef LITTLE_ENDIAN
 #define LITTLE_ENDIAN
+#endif
 #endif 
 /* #define SHA1HANDSOFF * Copies data before messing with it. */
 
@@ -97,6 +99,11 @@ static u_int8_t workspace[64];
     state[3] += d;
     state[4] += e;
     /* Wipe variables */
+#pragma unused(a) 
+#pragma unused(b)
+#pragma unused(c) 
+#pragma unused(d) 
+#pragma unused(e)
     a = b = c = d = e = 0;
 }
 
@@ -158,6 +165,9 @@ u_int8_t finalcount[8];
          ((context->state[i>>2] >> ((3-(i & 3)) * 8) ) & 255);
     }
     /* Wipe variables */
+    //Mark as unused to satisfy clang
+#pragma unused(i)
+#pragma unused(j)
     i = j = 0;
     memset(context->buffer, 0, 64);
     memset(context->state, 0, 20);
