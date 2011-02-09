@@ -139,7 +139,7 @@
 	}
 	if (self.files) {
 		for (NSString *key in self.files) {
-			[request attachFileWithName:@"file" filename:NSLocalizedString(@"Photo.jpg", @"") data:[self.files objectForKey:key]];
+			[request attachFileWithName:@"file" filename:NSLocalizedString(@"Photo.jpg", @"") contentType:@"image/jpeg" data:[self.files objectForKey:key]];
 		}
 	}
 	fetcher = [[OADataFetcher alloc] init];
