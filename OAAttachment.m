@@ -10,13 +10,12 @@
 
 @implementation OAAttachment
 
-@synthesize name, filename, contentType, data;
+@synthesize name, fileName, contentType, data;
 
 - (id)initWithName:(NSString *)aName filename:(NSString *)aFilename contentType:(NSString *)aContentType data:(NSData *)aData{
-	self = [super init];
-	if(self){
+	if((self = [super init])){
 		self.name = aName;
-		self.filename = aFilename;
+		self.fileName = aFilename;
 		self.contentType = aContentType;
 		self.data = aData;
 	}
@@ -25,7 +24,7 @@
 
 - (void)dealloc{
 	[name release];
-	[filename release];
+	[fileName release];
 	[contentType release];
 	[data release];
 	[super dealloc];
