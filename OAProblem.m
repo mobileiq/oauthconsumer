@@ -35,6 +35,7 @@ NSString *token_not_renewable = @"token_not_renewable";
 {
 	NSUInteger idx = [[OAProblem validProblems] indexOfObject:aProblem];
 	if (idx == NSNotFound) {
+        [self release];
 		return nil;
 	}
 	
@@ -50,7 +51,7 @@ NSString *token_not_renewable = @"token_not_renewable";
 			return [self initWithProblem:value];
 		}
 	}
-	
+	[self release];
 	return nil;
 }
 

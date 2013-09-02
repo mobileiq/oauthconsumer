@@ -175,7 +175,6 @@
 	if (idx == NSNotFound) {
 		@synchronized(calls) {
 			[calls addObject:call];
-			[call release];
 			[selectors addObject:NSStringFromSelector(selector)];
 		}
 	}
