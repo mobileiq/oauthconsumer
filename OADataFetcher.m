@@ -36,6 +36,13 @@
 	return self;
 }
 
+- (void)cancel {
+    [connection cancel];
+    delegate = nil;
+    didFailSelector = nil;
+    didFinishSelector = nil;
+}
+
 - (void)dealloc {
 	[connection release];
 	[response release];
