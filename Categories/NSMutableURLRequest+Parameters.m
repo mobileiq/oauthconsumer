@@ -86,7 +86,7 @@ static NSString *Boundary = @"-----------------------------------0xCoCoaouTHeBou
 
 - (void)setHTTPBodyWithString:(NSString *)body {
 	NSData *bodyData = [body dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-	[self setValue:[NSString stringWithFormat:@"%d", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+	[self setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[bodyData length]] forHTTPHeaderField:@"Content-Length"];
 	[self setHTTPBody:bodyData];
 }
 
@@ -109,7 +109,7 @@ static NSString *Boundary = @"-----------------------------------0xCoCoaouTHeBou
 	[bodyData appendData:data];
 	
 	[bodyData appendData:[[[@"\r\n--" stringByAppendingString:Boundary] stringByAppendingString:@"--"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[self setValue:[NSString stringWithFormat:@"%d", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+	[self setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[bodyData length]] forHTTPHeaderField:@"Content-Length"];
 	[self setHTTPBody:bodyData];
 	[bodyData release];
 }
